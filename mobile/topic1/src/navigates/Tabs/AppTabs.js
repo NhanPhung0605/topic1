@@ -1,9 +1,14 @@
 const {createStackNavigator} = require('react-navigation-stack');
-import Welcome from '../../components/Welcome/Welcome';
+import Welcome from '../../components/welcome/Welcome';
+import Form from '../../components/form/Form';
 const AppTabs = createStackNavigator({
-  // Welcome
+  // welcome
   Welcome: {
     screen: Welcome,
+  },
+  // form
+  Form: {
+    screen: Form,
   },
 });
 export default AppTabs;

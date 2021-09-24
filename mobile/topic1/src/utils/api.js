@@ -1,11 +1,14 @@
 import axios from 'axios';
-import * as ConfigServer from './../constants/ConfigServer';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import {CONFIG_SERVER} from '../constants/ActionTypes';
 
-export default function callApi(endpoint, method, body) {
+export default async function callApi(endpoint, method, body, param) {
+  const URL = await AsyncStorage.getItem(CONFIG_SERVER);
   return axios({
     method: method,
-    url: `${ConfigServer.API_URL}/${endpoint}`,
+    url: `${URL}/${endpoint}`,
     data: body,
+    params: param,
   }).catch((err) => {
     console.log(err);
   });
